@@ -1,4 +1,6 @@
-﻿namespace Models.DoorDir
+﻿using Models.entities;
+
+namespace Models.DoorDir
 {
     public class OpenOnOdd : DoorDecorator
     {

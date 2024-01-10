@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Models.entities;
 
-namespace Models
+namespace Models.util
 {
     public interface ICollidable
     {

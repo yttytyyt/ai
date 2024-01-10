@@ -1,4 +1,5 @@
 ﻿using Models.ItemDir;
+using Models.util;
 
 namespace Models.Convert
 {
@@ -31,7 +32,7 @@ namespace Models.Convert
                 case "key":
                     return new Models.ItemDir.Key()
                     {
-                        Color = (Models.Color)Enum.Parse(typeof(Models.Color), item.color.ToUpper()),
+                        Color = (Color)Enum.Parse(typeof(Color), item.color.ToUpper()),
                         CurrentPosition = new Position(item.x, item.y)
 
                     };

@@ -1,8 +1,10 @@
 ﻿using CODE_TempleOfDoom_DownloadableContent;
+using Models.entities;
 using Models.ItemDir;
+using Models.util;
 using System.Xml.Linq;
 
-namespace Models
+namespace Models.game
 {
     public class Room
     {
@@ -29,10 +31,10 @@ namespace Models
             int middleOfHeight = Height / 2;
             int middleOfWidth = Width / 2;
 
-            bool isAtMiddleOfWall = (position.CoordinateY == 0 && position.CoordinateX == middleOfWidth) ||
-                                    (position.CoordinateY == Height - 1 && position.CoordinateX == middleOfWidth) ||
-                                    (position.CoordinateY == middleOfHeight && position.CoordinateX == 0) ||
-                                    (position.CoordinateY == middleOfHeight && position.CoordinateX == Width - 1);
+            bool isAtMiddleOfWall = position.CoordinateY == 0 && position.CoordinateX == middleOfWidth ||
+                                    position.CoordinateY == Height - 1 && position.CoordinateX == middleOfWidth ||
+                                    position.CoordinateY == middleOfHeight && position.CoordinateX == 0 ||
+                                    position.CoordinateY == middleOfHeight && position.CoordinateX == Width - 1;
 
             return isAtMiddleOfWall;
         }
@@ -44,20 +46,20 @@ namespace Models
             switch (direction)
             {
                 case Direction.NORTH:
-                    x = this.Width / 2;
+                    x = Width / 2;
                     y = 0;
                     break;
                 case Direction.SOUTH:
-                    x = this.Width / 2;
-                    y = this.Height - 1;
+                    x = Width / 2;
+                    y = Height - 1;
                     break;
                 case Direction.EAST:
-                    x = this.Width - 1;
-                    y = this.Height / 2;
+                    x = Width - 1;
+                    y = Height / 2;
                     break;
                 case Direction.WEST:
                     x = 0;
-                    y = this.Height / 2;
+                    y = Height / 2;
                     break;
                 default:
                     throw new ArgumentException("Invalid direction");
@@ -75,7 +77,7 @@ namespace Models
         public override bool Equals(object obj)
         {
             Room other = obj as Room;
-            return other != null && other.Id == this.Id;
+            return other != null && other.Id == Id;
         }
 
         public Position GetDoorPosition(Direction direction)

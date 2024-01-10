@@ -1,4 +1,7 @@
-﻿namespace Models.DoorDir
+﻿using Models.entities;
+using Models.util;
+
+namespace Models.DoorDir
 {
     public class ToggleDoor : DoorDecorator, IObserver
     {

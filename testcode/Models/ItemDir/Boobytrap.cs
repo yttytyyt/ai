@@ -1,4 +1,6 @@
-﻿namespace Models.ItemDir
+﻿using Models.entities;
+
+namespace Models.ItemDir
 {
     public class Boobytrap : Item
     {

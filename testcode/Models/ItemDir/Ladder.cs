@@ -1,4 +1,6 @@
-﻿using DataLayer;
+﻿using Models.entities;
+using Models.game;
+using Models.util;
 using System;
 using System.Collections.Generic;
 using System.Linq;

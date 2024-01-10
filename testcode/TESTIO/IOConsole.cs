@@ -1,6 +1,7 @@
-﻿using Models;
-using Models.DoorDir;
+﻿using Models.DoorDir;
+using Models.game;
 using Models.ItemDir;
+using Models.util;
 
 namespace ConsoleIO
 {

@@ -1,4 +1,6 @@
-﻿using Models.ItemDir;
+﻿using Models.entities;
+using Models.game;
+using Models.ItemDir;
 
 namespace Models.DoorDir
 {

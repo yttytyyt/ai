@@ -1,9 +1,10 @@
 ﻿using CODE_TempleOfDoom_DownloadableContent;
-using DataLayer;
+using Models.game;
 using Models.ItemDir;
+using Models.util;
 using System;
 
-namespace Models
+namespace Models.entities
 {
     #region context
     /*
@@ -29,8 +30,8 @@ namespace Models
         #region Enity methods
         public void Move(Direction direction)
         {
-            if(Step(direction))
-            Notify();
+            if (Step(direction))
+                Notify();
 
         }
 
@@ -43,7 +44,7 @@ namespace Models
                 MoveToPosition(newPosition);
                 return true;
             }
-            else if (CurrentRoom.IsAtConnection(newPosition) && (Game.CanEnterConnection(direction) is Room newRoom))
+            else if (CurrentRoom.IsAtConnection(newPosition) && Game.CanEnterConnection(direction) is Room newRoom)
             {
                 MoveToNewRoom(newRoom);
                 return true;
@@ -76,7 +77,7 @@ namespace Models
             Collision.CheckCollisions(CurrentRoom.Items.OfType<ICollidable>().ToList(), this);
             Collision.CheckCollisions(CurrentRoom.SpecialItems.OfType<ICollidable>().ToList(), this);
             Collision.CheckCollisions(CurrentRoom.Enemies.OfType<ICollidable>().ToList(), this);
-            if(Game.Connections.Where(c => c.Ladder != null && c.Ladder.ContainsRoom(CurrentRoom)).ToList() is List<Connection> connections)
+            if (Game.Connections.Where(c => c.Ladder != null && c.Ladder.ContainsRoom(CurrentRoom)).ToList() is List<Connection> connections)
             {
                 List<ICollidable> ladderList = new List<ICollidable>();
                 foreach (Connection conn in connections)

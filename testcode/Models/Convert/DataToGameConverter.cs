@@ -1,7 +1,10 @@
 ﻿using CODE_TempleOfDoom_DownloadableContent;
 using DataLayer;
 using Models.DoorDir;
+using Models.entities;
+using Models.game;
 using Models.ItemDir;
+using Models.util;
 
 namespace Models.Convert
 {
@@ -23,7 +26,7 @@ namespace Models.Convert
 
             var initialPosition = new Position(gameData.player.startX, gameData.player.startY);
 
-            var player = new Models.Player()
+            var player = new Models.entities.Player()
             {
                 CurrentRoom = initialPlayerRoom,
                 CurrentPosition = initialPosition,
@@ -32,9 +35,9 @@ namespace Models.Convert
                 CurrentDirection = Direction.NORTH
             };
 
-            var connections = gameData.connections.Select(c => new Models.Connection()
+            var connections = gameData.connections.Select(c => new Models.game.Connection()
             {
-                connections = new Dictionary<Direction, Models.Room>
+                connections = new Dictionary<Direction, game.Room>
                 {
                     { Direction.NORTH, roomDictionary.GetValueOrDefault(c.NORTH) },
                     { Direction.SOUTH, roomDictionary.GetValueOrDefault(c.SOUTH) },
@@ -69,12 +72,12 @@ namespace Models.Convert
             return game;
         }
 
-        private ItemDir.Ladder CreateLadder(DataLayer.Ladder ladder, Room upperRoom, Room lowerRoom)
+        private ItemDir.Ladder CreateLadder(DataLayer.Ladder ladder, Models.game.Room upperRoom, Models.game.Room lowerRoom)
         {
 
             return new ItemDir.Ladder()
             {
-                LadderPosition = new Dictionary<Room, Position>()
+                LadderPosition = new Dictionary<Models.game.Room, Position>()
                 {
                     { upperRoom, new Position(ladder.upperX, ladder.upperY) },
                     { lowerRoom, new Position(ladder.lowerX, ladder.lowerY) }
@@ -82,14 +85,14 @@ namespace Models.Convert
             };
         }
 
-        private Models.Room CreateRoom(DataLayer.Room room)
+        private game.Room CreateRoom(DataLayer.Room room)
         {
             var itemFactory = new ItemFactory();
             var enemyFactory = new EnemyFactory();
             var items = room.items?.Select(i => itemFactory.CreateItem(i)).ToList() ?? new List<Models.ItemDir.Item>();
             var specialItems = room.specialFloorTiles?.Select(i => itemFactory.CreateItem(i)).ToList() ?? new List<Models.ItemDir.Item>();
 
-            var newRoom = new Models.Room()
+            var newRoom = new Models.game.Room()
             {
                 Id = room.id,
                 Height = room.height,

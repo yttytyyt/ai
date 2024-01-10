@@ -1,5 +1,4 @@
-﻿
-namespace Models
+﻿namespace Models.util
 {
     public class Position
     {
@@ -14,7 +13,7 @@ namespace Models
 
         public bool CompareTo(Position position)
         {
-            if (position != null && (position.CoordinateX == CoordinateX && position.CoordinateY == CoordinateY))
+            if (position != null && position.CoordinateX == CoordinateX && position.CoordinateY == CoordinateY)
             {
                 return true;
             }
@@ -67,7 +66,7 @@ namespace Models
             }
 
             Position P = (Position)obj;
-            return (CoordinateX == P.CoordinateX) && (CoordinateY == P.CoordinateY);
+            return CoordinateX == P.CoordinateX && CoordinateY == P.CoordinateY;
         }
 
         public override int GetHashCode()

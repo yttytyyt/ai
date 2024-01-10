@@ -1,11 +1,13 @@
 ﻿using CODE_TempleOfDoom_DownloadableContent;
+using Models.game;
+using Models.util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models
+namespace Models.entities
 {
     public class EnemyAdapter : IObserver, IEntity, ICollidable
     {
@@ -56,7 +58,8 @@ namespace Models
             {
                 return _Adaptee.NumberOfLives;
             }
-            set {
+            set
+            {
                 throw new InvalidOperationException("Setting this property is not allowed.");
             }
         }

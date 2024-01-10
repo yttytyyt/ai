@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Models.util;
 
-namespace Models
+namespace Models.entities
 {
     public interface IEntity
     {

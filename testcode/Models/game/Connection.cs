@@ -1,6 +1,8 @@
-﻿using Models.ItemDir;
+﻿using Models.entities;
+using Models.ItemDir;
+using Models.util;
 
-namespace Models
+namespace Models.game
 {
     public class Connection
     {
@@ -27,7 +29,7 @@ namespace Models
         {
             if (Door != null)
                 return Door.Interact(player);
-            
+
             return true;
         }
 

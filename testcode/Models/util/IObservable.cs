@@ -1,5 +1,4 @@
-﻿
-namespace Models
+﻿namespace Models.util
 {
     public interface IObservable
     {

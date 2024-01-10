@@ -1,8 +1,9 @@
-﻿using DataLayer;
+﻿using Models.entities;
 using Models.ItemDir;
+using Models.util;
 using System.Linq;
 
-namespace Models
+namespace Models.game
 {
     public class Game
     {
@@ -40,14 +41,14 @@ namespace Models
 
         public void CanPlay()
         {
-            if (Player.Lives <= 0 || Player.Items.Count(i => i is SankaraStone) == WinningStones )
+            if (Player.Lives <= 0 || Player.Items.Count(i => i is SankaraStone) == WinningStones)
                 End();
         }
 
         internal void SetLadderPosition(Room room)
         {
             if (Connections.Where(c => c.Ladder != null && c.Ladder.ContainsRoom(room)).ToList() is List<Connection> connections)
-                foreach(Connection conn in connections)
+                foreach (Connection conn in connections)
                 {
                     conn.Ladder.SetPosition(room);
 

@@ -1,4 +1,5 @@
-﻿using Models.ItemDir;
+﻿using Models.entities;
+using Models.ItemDir;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

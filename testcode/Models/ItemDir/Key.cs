@@ -1,4 +1,7 @@
-﻿namespace Models.ItemDir
+﻿using Models.entities;
+using Models.util;
+
+namespace Models.ItemDir
 {
     public class Key : Item
     {
